@@ -1,0 +1,151 @@
+<p>Resistencia works!</p>
+
+<div class="grid grid-cols-5 grid-rows-3 gap-6">
+  <div></div>
+
+  <!--  select para Color 1 -->
+  <div>
+    <form class="max-w-sm mx-auto">
+      <label for="color1" class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Color 1:</label>
+      <select id="color1" name="color1" [(ngModel)]="color1" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 block w-full p-2.5">
+        <option value="">Primera Banda</option>
+        <option value="negro">Negro</option>
+        <option value="cafe">Café</option>
+        <option value="rojo">Rojo</option>
+        <option value="naranja">Naranja</option>
+        <option value="amarillo">Amarillo</option>
+        <option value="verde">Verde</option>
+        <option value="azul">Azul</option>
+        <option value="violeta">Violeta</option>
+        <option value="gris">Gris</option>
+        <option value="blanco">Blanco</option>
+      </select>
+    </form>
+  </div>
+
+  <!--  select para Color 2 -->
+  <div>
+    <form class="max-w-sm mx-auto">
+      <label for="color2" class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Color 2:</label>
+      <select id="color2" name="color2" [(ngModel)]="color2" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 block w-full p-2.5">
+        <option value="">Segunda Banda</option>
+        <option value="negro">Negro</option>
+        <option value="cafe">Café</option>
+        <option value="rojo">Rojo</option>
+        <option value="naranja">Naranja</option>
+        <option value="amarillo">Amarillo</option>
+        <option value="verde">Verde</option>
+        <option value="azul">Azul</option>
+        <option value="violeta">Violeta</option>
+        <option value="gris">Gris</option>
+        <option value="blanco">Blanco</option>
+      </select>
+    </form>
+  </div>
+
+  <!--  select para Color 3 -->
+  <div>
+    <form class="max-w-sm mx-auto">
+      <label for="color3" class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Color 3:</label>
+      <select id="color3" name="color3" [(ngModel)]="color3" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 block w-full p-2.5">
+        <option value="">Tercera Banda</option>
+        <option value="negro">Negro</option>
+        <option value="cafe">Café</option>
+        <option value="rojo">Rojo</option>
+        <option value="naranja">Naranja</option>
+        <option value="amarillo">Amarillo</option>
+        <option value="verde">Verde</option>
+        <option value="azul">Azul</option>
+        <option value="violeta">Violeta</option>
+        <option value="gris">Gris</option>
+        <option value="blanco">Blanco</option>
+      </select>
+    </form>
+  </div>
+
+  <div></div>
+
+  <div></div>
+
+  <!-- radio buttons para tolerancia -->
+  <div class="flex items-center mb-4">
+    <input id="oro" type="radio" [(ngModel)]="tolerancia" name="tolerancia" value="oro" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300" />
+    <label for="oro" class="ms-2 text-sm font-medium text-black-900">Oro</label>
+  </div>
+  <div class="flex items-center">
+    <input id="plata" type="radio" [(ngModel)]="tolerancia" name="tolerancia" value="plata" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300" />
+    <label for="plata" class="ms-2 text-sm font-medium text-black-900">Plata</label>
+  </div>
+
+  <!-- botón para guardar los valores -->
+  <div>
+    <button (click)="subImprimeCalculo()" class="text-white bg-gray-800 hover:bg-gray-900 font-medium rounded-lg text-sm px-5 py-2.5">
+      Guardar Resistencia
+    </button>
+    <button (click)="mostrarResultadosGuardados()" class="text-white bg-gray-800 hover:bg-gray-900 font-medium rounded-lg text-sm px-5 py-2.5">
+      Imprimir Resultados
+    </button>
+    
+  </div>
+</div>
+
+<!-- tabla con los resultados -->
+ 
+
+
+<div class="grid grid-cols-5 grid-rows-2 gap-0">
+  <div class="col-span-3 row-span-2 col-start-2"><div class="overflow-x-auto relative">
+    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+      <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+        <tr>
+          <th scope="col" class="py-3 px-6">Banda 1</th>
+          <th scope="col" class="py-3 px-6">Banda 2</th>
+          <th scope="col" class="py-3 px-6">Multiplicador</th>
+          <th scope="col" class="py-3 px-6">Tolerancia</th>
+          <th scope="col" class="py-3 px-6">Resistencia</th>
+          <th scope="col" class="py-3 px-6">Resistencia Mínima</th>
+          <th scope="col" class="py-3 px-6">Resistencia Máxima</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let resultado of resultadosGuardados" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+          <td class="py-4 px-6">
+            <div [ngStyle]="{'background-color': getColor1(resultado)}" class="w-8 h-8 inline-block dark:text-gray-400">{{color1}}</div>
+          </td>
+          <td class="py-4 px-6">
+            <div [ngStyle]="{'background-color': getColor2(resultado)}" class="w-8 h-8 inline-block dark:text-gray-400">{{color2}}</div>
+          </td>
+          <td class="py-4 px-6">
+            <div [ngStyle]="{'background-color': getColor3(resultado)}" class="w-8 h-8 inline-block dark:text-gray-400" >{{color3}}</div>
+          </td>
+          <td class="py-4 px-6">{{ resultado.tolerancia }}</td>
+          <td class="py-4 px-6">{{ resistencia }}</td>
+          <td class="py-4 px-6">{{ resistenciaMinima }}</td>
+          <td class="py-4 px-6">{{ resistenciaMaxima }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div></div>
+</div>
+
+
+<!-- botón calcular resistencia -->
+
+
+
+
+<div class="grid grid-cols-5 grid-rows-">
+  <div class="col-start-3"><div class="mt-4">
+    <button (click)="limpiarRegistro()" class="text-white bg-gray-800 hover:bg-gray-900 font-medium rounded-lg text-sm px-5 py-2.5">
+      Limpiar registros
+    </button>
+  </div>
+</div>
+
+<div class="grid grid-cols-5 grid-rows-">
+  <div class="col-start-3"><div class="mt-4">
+    <br>
+  </div>
+</div>
+
+

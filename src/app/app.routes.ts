@@ -7,9 +7,7 @@ export const routes: Routes = [
     loadChildren:()=> import ('./auth/features/auth.routes')
 },
 {
-    path:'ejemplo1',
-    loadComponent:()=> import ('./formulario/ejemplo1/ejemplo1.component')
+    path:'formulario',
+    loadChildren:()=> import ('./formulario/formulario.routes')
 },
-
-
 ];
