@@ -110,13 +110,13 @@
       <tbody>
         <tr *ngFor="let resultado of resultadosGuardados" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
           <td class="py-4 px-6">
-            <div [ngStyle]="{'background-color': getColor1(resultado)}" class="w-8 h-8 inline-block dark:text-gray-400">{{color1}}</div>
+            <div [ngStyle]="{'background-color': getColor1(resultado)}" class="w-8 h-8 inline-block dark:text-white">{{color1}}</div>
           </td>
           <td class="py-4 px-6">
-            <div [ngStyle]="{'background-color': getColor2(resultado)}" class="w-8 h-8 inline-block dark:text-gray-400">{{color2}}</div>
+            <div [ngStyle]="{'background-color': getColor2(resultado)}" class="w-8 h-8 inline-block dark:text-white">{{color2}}</div>
           </td>
           <td class="py-4 px-6">
-            <div [ngStyle]="{'background-color': getColor3(resultado)}" class="w-8 h-8 inline-block dark:text-gray-400" >{{color3}}</div>
+            <div [ngStyle]="{'background-color': getColor3(resultado)}" class="w-8 h-8 inline-block dark:text-white" >{{color3}}</div>
           </td>
           <td class="py-4 px-6">{{ resultado.tolerancia }}</td>
           <td class="py-4 px-6">{{ resistencia }}</td>

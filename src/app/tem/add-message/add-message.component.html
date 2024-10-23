@@ -1,75 +1,26 @@
 <p>add-message works!</p>
 
+<form [formGroup]="formGroup4" (ngSubmit)="addAlumno()">
+  <div class="grid grid-cols-6 grid-rows-7 gap-6 px-8 py-4">
 
-<form  (ngSubmit)="addAlumno()">
+    <div class="row-start-3 col-start-1">
+      <label class="block">
+        <span class="block text-sm font-medium text-slate-700">Nombre</span>
+        <input
+          type="text"
+          id="nombre"
+          formControlName="nombre"
+          class="mt-1 px-4 py-2 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-full rounded-md sm:text-sm focus:ring-1"
+          placeholder="nombre"
+        />
+      </label>
+    </div>
 
-    <div class="grid grid-cols-6 grid-rows-7 gap-6 px-8 py-4">
-            <div class="col-start-1 row-start-2">
-            <label class="block">
-                <span class="block text-sm font-medium text-slate-700">Matrícula</span>
-                <input
-                    type="text"
-                    name="matricula"
-                    formControlName="matricula"
-                    class="mt-1 px-4 py-2 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-full rounded-md sm:text-sm focus:ring-1"
-                    placeholder="matricula"
-                />
-            </label>
-        </div>
-    
-        <div class="row-start-3 col-start-1">
-            <label class="block">
-                <span class="block text-sm font-medium text-slate-700">Nombre</span>
-                <input
-                    type="text"
-                    name="nombre"
-                    formControlName="nombre"
-                    class="mt-1 px-4 py-2 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-full rounded-md sm:text-sm focus:ring-1"
-                    placeholder="nombre"
-                />
-            </label>
-        </div>
-    
-        <div class="row-start-4 col-start-1">
-            <label class="block">
-                <span class="block text-sm font-medium text-slate-700">Correo</span>
-                <input
-                    type="email"
-                    name="email"
-                    formControlName="correo"
-                    class="mt-1 px-4 py-2 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-full rounded-md sm:text-sm focus:ring-1"
-                    placeholder="you@example.com"
-                />
-            </label>
-        </div>
-    
-        <div class="row-start-5 col-start-1">
-            <label class="block">
-                <span class="block text-sm font-medium text-slate-700">Edad</span>
-                <input
-                    type="number"
-                    name="edad"
-                    formControlName="edad"
-                    class="mt-1 px-4 py-2 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-full rounded-md sm:text-sm focus:ring-1"
-                    placeholder="edad"
-                />
-            </label>
-        </div>
-    
-        <div class="row-start-6 col-start-1">
-            <label class="block">
-                <span class="block text-sm font-medium text-slate-700">Horas Trabajadas</span>
-                <input
-                    type="number"
-                    name="horas"
-                    formControlName="horas"
-                    class="mt-1 px-4 py-2 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-full rounded-md sm:text-sm focus:ring-1"
-                    placeholder="horas"
-                />
-            </label>
-        </div>
-        <div class="row-start-7 col-start-1">
-            <button type="button" (click)="addAlumno()" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Registrar</button>
-        </div>
+    <div class="row-start-7 col-start-1">
+      <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Registrar</button>
+    </div>
 
-        
+  </div>
+</form>
+
+{{messageService.alumnos}}
