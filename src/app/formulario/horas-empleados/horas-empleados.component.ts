@@ -45,19 +45,46 @@ export default class HorasEmpleadosComponent implements OnInit {
   horas: number = 0;
 
   registrarEmpleado() {
-    const nuevoEmpleado: Trabajador = {
-      matricula: this.formGroup3.get('matricula')?.value,
-      nombre: this.formGroup3.get('nombre')?.value,
-      correo: this.formGroup3.get('correo')?.value,
-      edad: this.formGroup3.get('edad')?.value,
-      horas: this.formGroup3.get('horas')?.value
-    };
-    this.empleados.push(nuevoEmpleado);
+    const matricula = this.formGroup3.get('matricula')?.value;
+    const empleadoExistente = this.empleados.find(emp => emp.matricula === matricula); //busca si la matricula la tiene algun empleado
+
+    if (empleadoExistente) {
+      // si el empleado existe, modificar los datos
+      empleadoExistente.nombre = this.formGroup3.get('nombre')?.value;
+      empleadoExistente.correo = this.formGroup3.get('correo')?.value;
+      empleadoExistente.edad = this.formGroup3.get('edad')?.value;
+      empleadoExistente.horas = this.formGroup3.get('horas')?.value;
+    } else {
+      // si no existe, agregar un nuevo empleado
+      const nuevoEmpleado: Trabajador = {
+        matricula: this.formGroup3.get('matricula')?.value,
+        nombre: this.formGroup3.get('nombre')?.value,
+        correo: this.formGroup3.get('correo')?.value,
+        edad: this.formGroup3.get('edad')?.value,
+        horas: this.formGroup3.get('horas')?.value
+      };
+      this.empleados.push(nuevoEmpleado);
+    }
     localStorage.setItem('empleados', JSON.stringify(this.empleados));
     this.formGroup3.reset();  
   }
 
+  cargarEmpleado() {
+    const matricula = this.formGroup3.get('matricula')?.value; //se trae el la matricula que esta en el formulario y busca si la tiene algun empleado
+    const empleado = this.empleados.find(emp => emp.matricula === matricula);
 
+    if (empleado) {
+      this.formGroup3.patchValue({ //Solo actualizar algunos valores
+        nombre: empleado.nombre,
+        correo: empleado.correo,
+        edad: empleado.edad,
+        horas: empleado.horas
+      });
+    } else {
+      alert('Empleado no encontrado');
+    }
+  }
+  
   calcularPagoHorasRegulares(horas: number): number {
     return horas > 40 ? 40 * 70 : horas * 70;
   }
